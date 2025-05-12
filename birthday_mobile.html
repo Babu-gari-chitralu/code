@@ -2,94 +2,144 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🎉 Happy Birthday Bestie! 🎉</title>
+  <title>Happy Birthday Bestie!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap" rel="stylesheet">
   <style>
-    /* Reset default margin/padding */
-    * {
+    html, body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(to bottom, #6dd5fa, #2193b0);
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      overflow: hidden;
     }
 
-    body {
-      background: linear-gradient(135deg, #89f7fe, #66a6ff);
-      height: 100vh;
-      font-family: 'Poppins', sans-serif;
+    .container {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: #ffffff;
+      height: 100%;
       text-align: center;
-      overflow-x: hidden;
-      padding: 4vw;
+      position: relative;
+      z-index: 10;
     }
 
     h1 {
-      font-size: 7vw;
-      margin-bottom: 6vw;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-      animation: popIn 1s ease forwards;
+      font-family: 'Pacifico', cursive;
+      font-size: 4em;
+      margin: 20px 0;
+      text-shadow: 2px 2px 8px #0c3c72;
+      animation: glow 2s ease-in-out infinite alternate;
     }
 
-    button {
-      padding: 3.5vw 7vw;
-      font-size: 4vw;
-      background-color: #ffffff;
-      color: #1e90ff;
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #0ff, 0 0 20px #0cf; }
+      to { text-shadow: 0 0 20px #0ff, 0 0 30px #0cf; }
+    }
+
+    .btn {
+      background: #008cba;
       border: none;
-      border-radius: 50px;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border-radius: 30px;
+      color: white;
       cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      animation: popIn 1.5s ease forwards;
+      margin-top: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      transition: 0.3s ease;
     }
 
-    button:hover {
-      background-color: #f0f8ff;
+    .btn:hover {
+      background: #005f87;
       transform: scale(1.05);
     }
 
-    #message {
-      margin-top: 8vw;
-      font-size: 4vw;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 6vw;
-      border-radius: 20px;
+    #surprise {
+      margin-top: 30px;
       display: none;
-      line-height: 1.6;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-      backdrop-filter: blur(10px);
-      animation: fadeIn 1s ease forwards;
-    }
-
-    audio {
-      display: none;
-    }
-
-    @keyframes popIn {
-      0% { transform: scale(0.5); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+      font-size: 1.5em;
+      padding: 20px;
+      animation: fadeIn 2s ease;
     }
 
     @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(30px); }
-      100% { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: translateY(0);}
     }
 
+    .flower {
+      position: absolute;
+      bottom: -150px;
+      animation: floatUp 12s infinite ease-in-out;
+      width: 90px;
+      opacity: 0.9;
+    }
+
+    @keyframes floatUp {
+      0% { bottom: -150px; opacity: 0; }
+      50% { opacity: 1; }
+      100% { bottom: 120%; opacity: 0; }
+    }
+
+    #card {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 191, 255, 0.85);
+      color: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.4);
+      z-index: 100;
+      animation: fadeIn 2s ease;
+      text-align: center;
+    }
+
+    #card h2 {
+      font-family: 'Pacifico', cursive;
+      margin-bottom: 10px;
+    }
+
+    #card button {
+      margin-top: 15px;
+      background: #fff;
+      color: #008cba;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #doraemon {
+      position: fixed;
+      bottom: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 280px;
+      transition: bottom 2s ease-in-out;
+      z-index: 101;
+    }
   </style>
 </head>
 <body>
 
-  <h1>🎉 Happy Birthday, Bestie! 🎉</h1>
-  <button onclick="giveSurprise()">🎁 Tap for a Surprise!</button>
-
-  <div id="message">🎂🎈 Hey Bestie! You mean the world to me, and I'm so lucky to have you in my life.  
-    I hope your day is as bright, beautiful, and magical as you are! 💙  
-    May all your dreams come true, and may this year bring you endless smiles, love, and happiness! ✨  
-    <br><br>
-    Lots of love, from your forever friend. 💖
+  <div class="container">
+    <h1>Happy Birthday, Bestie! 🎉💙</h1>
+    <button class="btn" onclick="showSurprise()">Click for a Surprise!</button>
+    <div id="surprise">
+      🎂🎈 Hey Bestie! You mean the world to me, and I'm so lucky to have you in my life.  
+      I hope your day is as bright, beautiful, and magical as you are! 💙  
+      May all your dreams come true, and may this year bring you endless smiles, love, and happiness! ✨  
+      <br><br>
+      Lots of love, from your forever friend. 💖  
+    </div>
   </div>
 
   <!-- Audio -->
@@ -99,12 +149,13 @@
   </audio>
 
   <script>
-    function giveSurprise() {
-      const audio = document.getElementById("birthdayAudio");
-      audio.play();
-
-      const message = document.getElementById("message");
-      message.style.display = "block";
+    function showSurprise() {
+      document.getElementById('surprise').style.display = 'block';
+      // Play Doraemon voice after 2 seconds
+      setTimeout(() => {
+        document.getElementById('birthdayAudio').play();
+        showCard();
+      }, 1000);
     }
   </script>
 
