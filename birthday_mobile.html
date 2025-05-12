@@ -2,215 +2,199 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Happy Birthday Bestie!</title>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap" rel="stylesheet">
+  <title>Happy Birthday Bestie 🎉</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins&display=swap" rel="stylesheet">
   <style>
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
-      width: 100%;
-      background: linear-gradient(to bottom, #6dd5fa, #2193b0);
-      color: #fff;
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #e0f7fa, #80deea, #4fc3f7);
       overflow: hidden;
     }
-
-    .container {
+    .screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      height: 100%;
-      text-align: center;
-      position: relative;
-      z-index: 10;
+      align-items: center;
+      transition: opacity 1s ease;
+      background: linear-gradient(to bottom, #b3e5fc, #81d4fa);
     }
-
+    .hidden {
+      display: none;
+    }
     h1 {
       font-family: 'Pacifico', cursive;
-      font-size: 4em;
-      margin: 20px 0;
-      text-shadow: 2px 2px 8px #0c3c72;
-      animation: glow 2s ease-in-out infinite alternate;
+      color: #0277bd;
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-align: center;
     }
-
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #0ff, 0 0 20px #0cf; }
-      to   { text-shadow: 0 0 20px #0ff, 0 0 30px #0cf; }
+    .countdown {
+      display: flex;
+      gap: 30px;
     }
-
-    .btn {
-      background: #008cba;
+    .count-box {
+      background: #fff;
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .count-box h2 {
+      font-size: 40px;
+      margin: 0;
+      color: #0277bd;
+    }
+    .count-box p {
+      font-size: 16px;
+      color: #555;
+      margin: 5px 0 0;
+    }
+    .birthday-message {
+      font-family: 'Dancing Script', cursive;
+      font-size: 4rem;
+      color: #0277bd;
+      margin-bottom: 30px;
+      text-align: center;
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .open-button {
+      padding: 20px 40px;
+      font-size: 22px;
+      background: linear-gradient(45deg, #81d4fa, #0288d1);
+      color: #fff;
       border: none;
-      padding: 15px 30px;
-      font-size: 1.2em;
-      border-radius: 30px;
-      color: white;
+      border-radius: 20px;
       cursor: pointer;
-      margin-top: 20px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-      transition: 0.3s ease;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+      opacity: 0;
+      animation: fadeIn 2s forwards 1s;
     }
-
-    .btn:hover {
-      background: #005f87;
+    .open-button:hover {
       transform: scale(1.05);
     }
-
-    #surprise {
-      margin-top: 30px;
-      display: none;
-      font-size: 1.5em;
-      padding: 20px;
-      animation: fadeIn 2s ease;
-    }
-
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px);}
-      to   { opacity: 1; transform: translateY(0);}
+      to {
+        opacity: 1;
+      }
     }
-
-    /* 🎂 Gorgeous CSS Cake */
-    .cake {
-      position: absolute;
-      top: 10%;
+    .wish-card {
+      position: fixed;
+      bottom: -100%;
       left: 50%;
       transform: translateX(-50%);
-      width: 220px;
-      height: 220px;
-      z-index: 20;
-      animation: bounce 2s infinite ease-in-out;
+      background: #fff;
+      color: #333;
+      border-radius: 30px 30px 0 0;
+      padding: 40px 30px;
+      text-align: center;
+      width: 90%;
+      max-width: 600px;
+      font-size: 20px;
+      box-shadow: 0 -6px 20px rgba(0,0,0,0.2);
+      transition: bottom 1s ease;
+      white-space: pre-line;
     }
-
-    .layer {
-      position: absolute;
-      width: 200px;
-      height: 60px;
-      background: #ffb347;
-      border-radius: 15px;
-      box-shadow: inset 0 0 10px #d2691e, 0 4px 15px rgba(0,0,0,0.3);
-    }
-
-    .layer:nth-child(1) {
+    .wish-card.show {
       bottom: 0;
-      background: #ff6f61;
     }
-
-    .layer:nth-child(2) {
-      bottom: 65px;
-      width: 160px;
-      left: 20px;
-      background: #ffb347;
-    }
-
-    .layer:nth-child(3) {
-      bottom: 130px;
-      width: 120px;
-      left: 40px;
-      background: #ff6f61;
-    }
-
-    .sprinkle {
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      background: #fff;
-      border-radius: 50%;
-      box-shadow: 0 0 5px #fff;
-    }
-
-    /* Random sprinkle positions */
-    .sprinkle:nth-child(4) { top: 10px; left: 20px; background: #f9f871; }
-    .sprinkle:nth-child(5) { top: 30px; left: 50px; background: #87f9b7; }
-    .sprinkle:nth-child(6) { top: 20px; left: 90px; background: #ff99c8; }
-    .sprinkle:nth-child(7) { top: 5px;  left: 130px; background: #bdb2ff; }
-    .sprinkle:nth-child(8) { top: 25px; left: 160px; background: #ffc75f; }
-
-    .candle {
-      position: absolute;
-      width: 10px;
-      height: 30px;
-      background: #fff;
-      top: -30px;
-      border-radius: 2px;
-      box-shadow: 0 0 5px #fff;
-    }
-
-    .candle:nth-child(9)  { left: 50px; }
-    .candle:nth-child(10) { left: 100px; }
-    .candle:nth-child(11) { left: 150px; }
-
-    .flame {
-      position: absolute;
-      top: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 10px;
-      height: 10px;
-      background: orange;
-      border-radius: 50%;
-      animation: flicker 0.5s infinite alternate;
-      box-shadow: 0 0 20px orange;
-    }
-
-    @keyframes flicker {
-      from { transform: translateX(-50%) scale(1); opacity: 1; }
-      to   { transform: translateX(-50%) scale(1.3); opacity: 0.7; }
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50%      { transform: translateX(-50%) translateY(-20px); }
-    }
-
   </style>
 </head>
 <body>
 
-  <!-- 🎂 Gorgeous Cake at the top -->
-  <div class="cake" id="cake">
-    <div class="layer"></div>
-    <div class="layer"></div>
-    <div class="layer"></div>
-    <!-- Sprinkles -->
-    <div class="sprinkle"></div>
-    <div class="sprinkle"></div>
-    <div class="sprinkle"></div>
-    <div class="sprinkle"></div>
-    <div class="sprinkle"></div>
-    <!-- Candles -->
-    <div class="candle"><div class="flame"></div></div>
-    <div class="candle"><div class="flame"></div></div>
-    <div class="candle"><div class="flame"></div></div>
-  </div>
-
-  <div class="container">
-    <h1>Happy Birthday, Bestie! 🎉💙</h1>
-    <button class="btn" onclick="showSurprise()">Click for a Surprise!</button>
-    <div id="surprise">
-      🎂🎈 Hey Bestie! You mean the world to me, and I'm so lucky to have you in my life.  
-      I hope your day is as bright, beautiful, and magical as you are! 💙  
-      May all your dreams come true, and may this year bring you endless smiles, love, and happiness! ✨  
-      <br><br>
-      Lots of love, from your forever friend. 💖  
+<!-- Screen 1: Countdown -->
+<div id="countdownScreen" class="screen">
+  <h1>Your Special Day is Almost Here ❤️</h1>
+  <div class="countdown">
+    <div class="count-box">
+      <h2 id="days">0</h2>
+      <p>Days</p>
+    </div>
+    <div class="count-box">
+      <h2 id="hours">0</h2>
+      <p>Hours</p>
+    </div>
+    <div class="count-box">
+      <h2 id="minutes">0</h2>
+      <p>Minutes</p>
+    </div>
+    <div class="count-box">
+      <h2 id="seconds">0</h2>
+      <p>Seconds</p>
     </div>
   </div>
+</div>
 
-  <audio id="birthdayAudio">
-    <source src="doremon.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+<!-- Screen 2: Birthday Message & Button -->
+<div id="messageScreen" class="screen hidden">
+  <div class="birthday-message">🎉 Happy Birthday Bestie! 🎂🎈</div>
+  <button class="open-button" onclick="openWish()">Open Your Surprise 🎁</button>
+</div>
 
-  <script>
-    function showSurprise() {
-      document.getElementById('surprise').style.display = 'block';
-      document.getElementById('cake').style.display = 'none';
-      setTimeout(() => {
-        document.getElementById('birthdayAudio').play();
-      }, 1000);
+<!-- Birthday Wish Card -->
+<div id="wishCard" class="wish-card">
+  🎂🎈 Hey Bestie! You mean the world to me, and I'm so lucky to have you in my life.  
+  I hope your day is as bright, beautiful, and magical as you are! 💙  
+  May all your dreams come true, and may this year bring you endless smiles, love, and happiness! ✨
+</div>
+
+<audio id="bdayAudio">
+  <source src="doremon.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<script>
+  // Set your target date here:
+  const targetDate = new Date();
+  targetDate.setMinutes(targetDate.getMinutes() + 1); // for demo, 1 minute
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = targetDate - now;
+
+    if (diff <= 0) {
+      document.getElementById("days").textContent = "0";
+      document.getElementById("hours").textContent = "0";
+      document.getElementById("minutes").textContent = "0";
+      document.getElementById("seconds").textContent = "0";
+      showBirthdayMessage();
+      return;
     }
-  </script>
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / 1000 / 60) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    document.getElementById("days").textContent = days;
+    document.getElementById("hours").textContent = hours;
+    document.getElementById("minutes").textContent = minutes;
+    document.getElementById("seconds").textContent = seconds;
+  }
+
+  setInterval(updateCountdown, 1000);
+
+  function showBirthdayMessage() {
+    document.getElementById("countdownScreen").classList.add("hidden");
+    document.getElementById("messageScreen").classList.remove("hidden");
+  }
+
+  function openWish() {
+    document.getElementById("wishCard").classList.add("show");
+    document.getElementById("bdayAudio").play();
+  }
+</script>
 
 </body>
 </html>
