@@ -115,7 +115,7 @@
 
 <!-- Screen 1: Countdown -->
 <div id="countdownScreen" class="screen">
-  <h1>Your Special Day is Almost Here ❤️</h1>
+  <h1>Your Special Day is Almost Here 💙</h1>
   <div class="countdown">
     <div class="count-box">
       <h2 id="days">0</h2>
@@ -156,9 +156,7 @@
 
 <script>
   // Set your target date here:
-  const targetDate = new Date();
-  targetDate.setMinutes(targetDate.getMinutes() + 1); // for demo, 1 minute
-
+  const targetDate = new Date('2025-05-14T00:00:00');
   function updateCountdown() {
     const now = new Date();
     const diff = targetDate - now;
